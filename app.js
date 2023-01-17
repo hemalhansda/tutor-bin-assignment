@@ -5,6 +5,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const compression = require('compression');
 const path = require('path');
 const cors = require('cors');
+const passport = require('passport');
+const { jwtStrategy } = require('./config/passport');
 const httpStatus = require('http-status');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
@@ -34,6 +36,10 @@ app.use(mongoSanitize());
 
 // gzip compression
 app.use(compression());
+
+// jwt authentication
+app.use(passport.initialize());
+passport.use('jwt', jwtStrategy);
 
 // enable cors
 app.options('*', cors());

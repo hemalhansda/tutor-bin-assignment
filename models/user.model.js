@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const {roles} = require("../config/roles");
 const autoPopulate = require("mongoose-autopopulate");
 const {toJSON, paginate} = require("./plugins");
 
@@ -18,6 +19,11 @@ const userSchema = mongoose.Schema({
     default: "",
     trim: true,
     private: true // used by the toJSON plugin
+  },
+  role: {
+    type: String,
+    enum: roles,
+    default: roles[0]
   },
   active: {
     type: Boolean,

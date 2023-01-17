@@ -29,7 +29,6 @@ module.exports = {
     options: {
       useCreateIndex: true,
       useNewUrlParser: true,
-      useUnigitedTopology: true,
       useUnifiedTopology: true,
       useFindAndModify: false
     },
