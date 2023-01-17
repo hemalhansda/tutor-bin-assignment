@@ -125,4 +125,11 @@ describe('Todo - API\'s', () => {
         });
     });
 
+    after((done) => {
+        let token = mongoose.model('Token');
+        token.deleteMany({}).then((res) => {
+            done();
+        });
+    });
+
 });

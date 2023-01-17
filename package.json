@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=dev-local nodemon index.js",
+    "start": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha test/index.js && cross-env NODE_ENV=dev-local nodemon index.js",
     "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha test/index.js",
     "test:watch": "nodemon --exec \"npm test\""
   },
