@@ -6,8 +6,8 @@ const addTodo = async (userId, payload) => {
     return result;
 };
 
-const updateTodoById = async (todoId, payload) => {
-    const result = await Todo.updateOne({_id: todoId, active: true}, {
+const updateTodoById = async (userId, todoId, payload) => {
+    const result = await Todo.updateOne({user: userId, _id: todoId, active: true}, {
         $set: {
             ...payload
         }
@@ -16,8 +16,8 @@ const updateTodoById = async (todoId, payload) => {
     return result;
 };
 
-const deleteTodoById = async (todoId) => {
-    const result = await Todo.updateOne({_id: todoId, active: true}, {
+const deleteTodoById = async (todoId, userId) => {
+    const result = await Todo.updateOne({user: userId, _id: todoId, active: true}, {
         $set: { active: false }
     });
 
@@ -29,8 +29,8 @@ const getTodoList = async (userId) => {
     return result;
 };
 
-const markTodoComplete = async (todoId) => {
-    const result = await updateTodoById(todoId, { completed: true });
+const markTodoComplete = async (todoId, userId) => {
+    const result = await updateTodoById(userId, todoId, { completed: true });
     return result;
 };
 

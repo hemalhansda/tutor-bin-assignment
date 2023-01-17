@@ -10,6 +10,30 @@ const addTodo = {
     })
 };
 
+const getTodoList = {
+    params: Joi.object().keys({userId: Joi.required().custom(objectId)}),
+};
+
+const updateTodoById = {
+    params: Joi.object().keys({todoId: Joi.required().custom(objectId)}),
+    body: Joi.object().keys({
+        title: Joi.string(),
+        body: Joi.string()
+    })
+};
+
+const markTodoComplete = {
+    params: Joi.object().keys({todoId: Joi.required().custom(objectId)}),
+};
+
+const deleteTodoById = {
+    params: Joi.object().keys({todoId: Joi.required().custom(objectId)}),
+};
+
 module.exports = {
-    addTodo
+    addTodo,
+    getTodoList,
+    updateTodoById,
+    markTodoComplete,
+    deleteTodoById
 }
