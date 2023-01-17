@@ -25,7 +25,7 @@ const deleteTodoById = async (todoId, userId) => {
 };
 
 const getTodoList = async (userId) => {
-    const result = await Todo.find({user: userId, active: true});
+    const result = await Todo.find({user: userId, active: true}).sort({updated_at: -1});
     return result;
 };
 
